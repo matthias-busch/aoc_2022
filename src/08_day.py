@@ -41,15 +41,16 @@ def count_visible_trees(tree_map: list[list[int]]) -> int:
             elif ( tree_map[i][j] > max(tree_map[i][:j]) ) or ( tree_map[i][j] > max(tree_map[i][j+1:]) ):
                 visible_trees.append((row, column))
 
-            # check column
-            elif ( tree_map[i][j] > max( [row[j] for row in tree_map[:i]] ) ) or ( tree_map[i][j] > max( [row[j] for row in tree_map[i:]] ) ):
+            # check column up / down
+            elif ( tree_map[i][j] > max( [row[j] for row in tree_map[:i]] ) ) or ( tree_map[i][j] > max( [row[j] for row in tree_map[i+1:]] ) ):
                 visible_trees.append((row, column))
 
-    # print(visible_trees)
     return len(visible_trees)
 
-print(f'{count_visible_trees(tree_map=lines) = }')
-print(f'{count_visible_trees(tree_map=test_lines) = }')
 
-# 2237 too high
-# 1226
+# Results
+solution_1 = count_visible_trees(tree_map=lines)
+print(f'{solution_1 = }')
+
+
+
